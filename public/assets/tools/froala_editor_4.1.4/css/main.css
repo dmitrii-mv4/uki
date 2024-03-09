@@ -1,0 +1,14 @@
+#editor {
+    text-align: center;
+  }
+
+  div#editor {
+    width: 100%;
+    margin: auto;
+    text-align: left;
+    margin-top: 20px;
+  }
+
+  .ss {
+    background-color: red;
+  }

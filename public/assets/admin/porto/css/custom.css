@@ -1,0 +1,181 @@
+/* Add here all your CSS customizations */
+body, h1, h2, h3, h4, h5, h6, div, span {
+    letter-spacing: 1px!important;
+}
+
+/* Login */
+.body-login {
+    background: #1D2127;
+}
+
+.custom-login-title {
+    width: 100%;
+    text-align: center;
+    font-size: 18px!important;
+    background: #191c21!important;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    border-radius: 5px 5px 0px 0px !important;
+}
+
+.custom-card-body {
+    border-radius: 0px 0px 5px 5px!important;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5)!important;
+    background-color: #21262d!important;
+}
+
+.custom-login-input {
+    background: #1d2127!important;
+    border: 1px solid #1d2127!important;
+    color: #999 !important;
+}
+
+.castum-input-group-text {
+    background: #1d2127!important;
+    border: 1px solid #1d2127!important;
+    color: #999 !important;
+}
+
+.checkbox-custom input[type="checkbox"] + label::before {
+    background: #1d2127!important;
+    border: 1px solid #1d2127!important;
+    color: #fff !important;
+ }
+
+/* Main Page */
+.feedback-footer-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.feedback-footer-main-smail {
+    font-size: 12px;
+}
+
+.feedback-footer {
+    float: right; 
+    margin-top: 10px;
+}
+
+.castom-menu {
+    background-color: #1d2127!important;
+}
+
+.custom-breadcrumbs {
+    margin-right: 30px!important;
+}
+
+.info-module {
+    margin: 0 0 25px 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-btn-add {
+    float: right;
+}
+
+.form-input-error {
+    color: red;
+}
+
+.custom-pagination {
+    margin: 20px 0px 0px 0px;
+}
+
+.custom-info-pagination {
+    margin: 27px 0px 0px 0px;
+}
+
+.card-title {
+    letter-spacing: 0.5px!important;
+}
+
+.custom-info {
+    margin-top: 10px;
+}
+
+/** Feedback **/
+.feedback-views {
+    display: flex; 
+    justify-content: space-between;
+}
+
+.feedback-views-delete {
+    display: inline-block; 
+    height: 27px;
+}
+
+.feedback-views-block-left {
+    width: 45%!important;
+}
+
+.feedback-views-klient-tb-main td {
+    width: 80%;
+}
+
+.feedback-views-info-blok-right {
+    width: 45%!important; 
+    margin-left: 10%!important;
+}
+
+.feedback-views-info-tb-main {
+    width: 70%
+}
+
+.feedback-views-info-tb-main td {
+    width: 25%!important;
+}
+
+.feedback-edit-block-left {
+    width: 50%!important;
+}
+
+.feedback-edit-klient {
+    display: flex;
+    align-items: center;
+    margin: 0px 0px 20px 0px;
+}
+
+.feedback-edit-title {
+    width: 35%;
+}
+
+.feedback-edit-input {
+    width: 150%!important;
+}
+
+.feedback-edit-info-blok-right {
+    width: 35%!important;
+}
+
+.feedback-edit-info {
+    display: flex;
+    align-items: center;
+    margin: 0px 0px 20px 0px;
+}
+
+.feedback-edit-title-info {
+    width: 30%;
+}
+
+.feedback-edit-input-textarea {
+    width: 170%!important;
+}
+
+/** Кнопки опций **/
+.options {
+    display: flex;
+    align-items: center;
+}
+
+.custom-edit {
+    font-size: 12px!important;
+    padding: 5px!important;
+    margin: 0 10px 0 0;
+}
+
+.custom-delete {
+    font-size: 12px!important;
+    padding: 5px!important;
+}
