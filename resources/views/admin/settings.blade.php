@@ -38,12 +38,19 @@
                 <div class="form-group row pb-4">
                     <label class="col-lg-3 control-label text-lg-end pt-2" for="description">Описание:</label>
                     <div class="col-lg-6">
-                        <textarea class="form-control" rows="3" id="textareaDefault" name="description">{{ $settings->description }}</textarea>
+                        <textarea class="form-control" rows="4" id="textareaDefault" name="description">{{ $settings->description }}</textarea>
                         @error('description')
                             <span class="help-block form-input-error">Поле обязательное для заполнения.</span>
                         @enderror
                     </div>
                 </div>
+
+                {{-- <div class="form-group row pb-4">
+                    <label class="col-lg-3 control-label text-lg-end pt-2" for="counters">Счётчики:</label>
+                    <div class="col-lg-6">
+                        <textarea class="form-control" rows="10" id="textareaDefault" name="counters">{{ $settings->counters }}</textarea>
+                    </div>
+                </div> --}}
 
                 <button type="submit" class="form-btn-add mb-1 mt-1 me-1 btn btn-success">Изменить</button>
             </form>

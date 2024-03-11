@@ -1,0 +1,118 @@
+@import "./stylenone";
+@import "./container/container";
+@import "./header/header";
+@import "./section/main";
+@import "./section/benefit";
+@import "./section/tariff";
+@import "./section/feedback";
+@import "./section/footer";
+@import "./section/copyright";
+
+//!Подключить шрифты font-family: "Montserrat";
+
+body {
+    font-family: "Open Sans", sans-serif;
+}
+
+h2 {
+    font-size: 28px;
+    color: #364655;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+h3 {
+    font-size: 21px;
+    font-weight: 500;
+    color: #505050;
+}
+
+h4 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #0f394c;
+    position: relative;
+    padding-bottom: 12px;
+}
+
+.section_padding {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.btn {
+    cursor: pointer;
+    padding: 10px 24px;
+    border: 2px solid;
+    border-radius: 100px;
+    box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.25);
+    font-family: "Montserrat";
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #ffffff;
+    margin: 25px 10px 0 0;
+    -webkit-transition: 0.2s;
+    -moz-transition: 0.2s;
+    transition: 0.2s;
+    &:hover {
+        -webkit-transform: translateY(-2px);
+        -moz-transform: translateY(-2px);
+        transform: translateY(-2px);
+    }
+    &_blue {
+        background-color: #0facf3;
+        border-color: #0facf3;
+    }
+    &_purple {
+        background: #6c63ff;
+        border-color: #6c63ff;
+    }
+    &__green {
+        background-color: #46da60;
+        border-color: #46da60;
+    }
+    &__animation {
+        border: none;
+        outline: none;
+        overflow: hidden;
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 100%;
+            width: 100%;
+            height: 50%;
+            background-color: #051242;
+            z-index: -1;
+            -webkit-transition: all 0.5s;
+            transition: all 0.5s;
+        }
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            right: 100%;
+            width: 100%;
+            height: 50%;
+            background-color: #051242;
+            z-index: -1;
+            -webkit-transition: all 0.5s;
+            transition: all 0.5s;
+        }
+        &:hover::before {
+            left: 0;
+        }
+        &:hover::after {
+            right: 0;
+        }
+    }
+}
+
+// .wrp{
+//     padding-right: 15px;
+//     padding-left: 15px;
+// }

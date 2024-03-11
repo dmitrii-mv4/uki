@@ -18,7 +18,8 @@ use Illuminate\Support\Facades\Auth;
 //     return view('welcome');
 // });
 
-Route::get('/', 'App\Http\Controllers\HomeController@index');
+Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 // Admin
@@ -26,7 +27,8 @@ Route::middleware(['admin'])->prefix('admin')->group(function ()
 {
     Route::get('', 'App\Http\Controllers\Admin\AdminController@index')->name('admin.index');
     Route::get('/settings', 'App\Http\Controllers\Admin\AdminController@settings')->name('admin.settings');
-    Route::patch('/settings_save', 'App\Http\Controllers\Admin\AdminController@settings_save')->name('admin.settings_save');
+    Route::patch('/settings-save', 'App\Http\Controllers\Admin\AdminController@settings_save')->name('admin.settings_save');
+    Route::get('/about-ariff', 'App\Http\Controllers\Admin\AdminController@about_tariff')->name('admin.about_tariff');
 
     // Module Articles
     Route::prefix('articles')->group(function ()
@@ -133,6 +135,10 @@ Route::middleware(['admin'])->prefix('admin')->group(function ()
 Route::get('/admin/login', 'App\Http\Controllers\Admin\AdminController@login')->name('admin.login');
 Route::get('/logout', 'App\Http\Controllers\Auth\AuthController@logout')->name('auth.logout');
 
+// URL SITE
+Route::get('/{page}', 'App\Http\Controllers\PagesController@index')->name('home.pages.index');
+Route::post('', 'App\Http\Controllers\HomeController@feedback')->name('home.feedback.store');
+
 // Articles
 Route::get('/articles', 'App\Http\Controllers\ArticlesController@index')->name('articles.index');
 Route::get('/articles/create', 'App\Http\Controllers\ArticlesController@create')->name('articles.create');
@@ -143,8 +149,4 @@ Route::get('/articles/{article}/edit', 'App\Http\Controllers\ArticlesController@
 Route::patch('/articles/{article}', 'App\Http\Controllers\ArticlesController@update')->name('articles.update');
 Route::delete('/articles/{article}', 'App\Http\Controllers\ArticlesController@destroy')->name('articles.delete');
 
-
-//Route::get('/{page}', 'App\Http\Controllers\Admin\Pages\PagesController@page')->name('pages.page');
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('content')
 
-{{ $page->title }}
+{{ $page->content }}
 
 <?php //include($pach_public); ?>
 

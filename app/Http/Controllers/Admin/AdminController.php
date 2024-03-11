@@ -16,20 +16,27 @@ use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
-    public $title_page = "Панель приборов";
-
     public function __construct()
     {
-        View::share ( 'title_page', $this->title_page );
+        //$this->middleware('auth');
+
+        // $current_date = time(); // текущая дата
+        // $end_of_tariff_date = strtotime("2024-03-31"); // дата окончания тарифа
+        // $amount_of_days = $end_of_tariff_date - $current_date;
+        // $amount_of_days = round($amount_of_days / (60 * 60 * 24));
+
+        // View::share ( 'amount_of_days', $amount_of_days );
     }
 
     public function index()
     {
+        View::share ( 'title_page', 'Панель приборов' );
+
         // онлайн всех пользователей (с учётом гостей)
         $users_online = DB::table(config('session.table'))
-        ->distinct()
-        ->where('sessions.last_activity', '>', Carbon::now()->subMinutes(5)->getTimestamp())
-        ->get();
+            ->distinct()
+            ->where('sessions.last_activity', '>', Carbon::now()->subMinutes(5)->getTimestamp())
+            ->get();
 
         // выводим опубликованные новости
         $news = News::where('is_published', 1)->get();
@@ -54,6 +61,8 @@ class AdminController extends Controller
 
     public function settings()
     {
+        View::share ( 'title_page', 'Настройки системы' );
+
         $settings = Setting::All();
         $settings = $settings[0];
 
@@ -62,13 +71,39 @@ class AdminController extends Controller
 
     public function settings_save()
     {
-        $data = request()->validate([
-            'name' => 'string | min:3',
-            'description' => 'string',
-        ]);
+        // DB::table('settings')
+        //     ->where('id', '=', '1')
+        //     ->update([
+        //         'name' => request()->name,
+        //         'description' => request()->description,
+        //         'counters' => request()->counters,
+        //     ]);
+
+        if (empty(request()->counters))
+        {
+            $data = request()->validate([
+                'name' => 'string | min:3',
+                'description' => 'string',
+            ]);
+            $data['counters'] = '';
+
+        } else {
+            $data = request()->validate([
+                'name' => 'string | min:3',
+                'description' => 'string',
+                'counters' => 'string',
+            ]);
+        }
 
         Setting::where('id', '=', '1')->update($data);
 
         return redirect()->route('admin.settings');
+    }
+
+    public function about_tariff()
+    {
+        View::share ( 'title_page', 'О тарифе' );
+
+        return view('admin/about_tariff');
     }
 }

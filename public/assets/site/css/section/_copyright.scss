@@ -1,0 +1,12 @@
+.copyright {
+    background: #f5faff;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    text-align: center;
+}
+
+@media (min-width: 767.98px) {
+    section.copyright {
+        text-align: left;
+    }
+}

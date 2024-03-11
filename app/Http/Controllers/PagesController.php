@@ -4,18 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
-
-use App\Models\Setting;
 use App\Models\Page;
-use App\Models\Feedback;
+use App\Models\Setting;
 
-class HomeController extends Controller
+class PagesController extends Controller
 {
     /**
      * Create a new controller instance.
      *
      * @return void
      */
+
     public function __construct()
     {
         //$this->middleware('auth');
@@ -25,11 +24,9 @@ class HomeController extends Controller
 
         $name_site = $settings['name'];
         $description_site = $settings['description'];
-        $counters_site = $settings['counters'];
 
         View::share ( 'name_site', $name_site);
         View::share ( 'description_site', $description_site);
-        View::share ( 'counters_site', $counters_site);
     }
 
     /**
@@ -37,27 +34,14 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index($page)
     {
-        $title_page = '';
+        $page = Page::where('url', $page)->get();
+        $page = $page[0];
 
+        $title_page = $page->title.' - ';
         View::share ( 'title_page', $title_page);
-        return view('home');
-    }
 
-    public function feedback()
-    {
-        $data = request()->validate([
-            'name' => 'required|string',
-            'surname' => 'string',
-            'phone' => 'required|string',
-            'email' => '',
-            'content' => '',
-            'status' => '',
-            'feedback_forms_id' => '',
-        ]);
-
-        Feedback::create($data);
-        return redirect()->route('home');
+        return view('page', compact('page'));
     }
 }

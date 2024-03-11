@@ -1,0 +1,71 @@
+.tariff {
+    &__title {
+    }
+
+    &__card {
+        padding: 20px 20px 50px 20px;
+        margin: 0 auto;
+        margin-bottom: 30px;
+        background-color: #ffffff;
+        box-shadow: 0px 0px 80px 0px rgba(0, 0, 0, 0.1);
+        border: transparent;
+        text-align: center;
+        position: relative;
+    }
+
+    &__name {
+        margin-bottom: 30px;
+    }
+
+    &__price {
+        font-family: "Montserrat";
+        font-size: 34px;
+        font-weight: 400;
+        color: #808080;
+        margin-bottom: 20px;
+    }
+    &__desc{
+        margin-top: 30px;
+        margin-bottom: 50px;
+    }
+    &__desc p{
+        font-family: "Montserrat";
+        font-size: 14px;
+        font-weight: 400;
+        color: #505050;
+        line-height: 1.4;
+        margin-bottom: 10px;
+    }
+    & button{
+        position: absolute;
+        bottom: 4%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        &:hover{
+            transform: translate(-50%, -54%);
+        }
+    }
+    
+}
+.section {
+    &_padding {
+    }
+}
+
+@media (min-width: 991.98px){
+    .tariff {
+        &__wrp {
+            display: flex;
+            justify-content: space-between;
+            padding: 40px 0;
+        }
+        &__card {
+            width: 32%;
+        }
+        &__card:nth-child(1), &__card:nth-child(3) {   
+            margin-top: 20px;
+            margin-bottom: 0px;
+        }
+
+    }
+}

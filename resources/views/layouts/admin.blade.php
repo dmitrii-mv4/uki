@@ -70,7 +70,8 @@
 			<header class="custom-header header">
 				<div class="logo-container">
 					<a href="{{ route('admin.index') }}" class="logo">
-						<img src="/assets/admin/porto/img/logo.png" width="75" height="35" alt="Porto Admin" />
+						{{-- <img src="/assets/admin/porto/img/logo.png" width="75" height="35" alt="Porto Admin" /> --}}
+						<h1 style="margin: 0px 15px 0px 0px">UKI</h1>
 					</a>
 
 					<div class="d-md-none toggle-sidebar-left" data-toggle-class="sidebar-left-opened" data-target="html" data-fire-event="sidebar-left-opened">
@@ -82,15 +83,15 @@
 				<!-- start: search & user box -->
 				<div class="header-right">
 
-					<div id="userbox" class="userbox">
-						{{-- <figure class="profile-picture">
+					{{-- <div id="userbox" class="userbox">
+						<figure class="profile-picture">
 							<img src="/assets/admin/porto/img/rate/premium.png" alt="Joseph Doe" class="rounded-circle" data-lock-picture="/assets/admin/porto/img/no_avatar.svg">
-						</figure> --}}
+						</figure>
 						<div class="profile-info" data-lock-name="admin" data-lock-email="dmitrii_mv4@mail.ru">
 							<span class="name">Тариф: <strong style="color: gold;">Премиум</strong></span>
 							<span class="role">Дней осталось: <strong>100</strong></span>
 						</div>
-					</div>
+					</div> --}}
 
 					{{-- <form action="pages-search-results.html" class="search nav-form">
 						<div class="input-group">
@@ -386,27 +387,19 @@
 										</div>
 									</div>
 
-									<li class="nav-parent">
-				                        <a class="nav-link" href="#">
+									<li>
+				                        <a class="nav-link" href="{{ route('admin.settings') }}">
 				                            <i class="icons icon-settings" aria-hidden="true"></i>
 				                            <span>Настройки</span>
-				                        </a>
-				                        <ul class="nav nav-children">
-				                            <li>
-				                                <a class="nav-link" href="{{ route('admin.settings') }}">
-				                                    Общие настройки
-				                                </a>
-				                            </li>
-				    
-				                        </ul>
+				                        </a>                        
 				                    </li>
 
-									<li>
-				                        <a class="nav-link" href="">
+									{{-- <li>
+				                        <a class="nav-link" href="{{ route('admin.about_tariff') }}">
 				                            <i class="icons icon-info"></i>
 				                            <span>О тарифе</span>
 				                        </a>                        
-				                    </li>
+				                    </li> --}}
 
 				                </ul>
 				            </nav>
