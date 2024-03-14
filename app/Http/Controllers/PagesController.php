@@ -36,12 +36,21 @@ class PagesController extends Controller
      */
     public function index($page)
     {
-        $page = Page::where('url', $page)->get();
-        $page = $page[0];
+        $page_db = Page::where('url', $page)->get();
 
-        $title_page = $page->title.' - ';
-        View::share ( 'title_page', $title_page);
+        if (!empty($page_db[0]))
+        {
+            $page = $page_db[0];
 
-        return view('page', compact('page'));
+            $title_page = $page->title.' - ';
+
+            View::share ( 'title_page', $title_page);
+            return view('page', compact('page'));
+
+        } else {
+            abort('404');
+        }
+
+        dd($page_db);
     }
 }

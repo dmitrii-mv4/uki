@@ -29,6 +29,7 @@
 		<link rel="stylesheet" href="/assets/admin/porto/vendor/morris/morris.css" />
 		<link rel="stylesheet" href="/assets/admin/porto/vendor/elusive-icons/css/elusive-icons.css">
 		<link rel="stylesheet" href="/assets/admin/porto/vendor/simple-line-icons/css/simple-line-icons.css">
+		<link rel="stylesheet" href="/assets/admin/porto/vendor/bootstrap-tagsinput/bootstrap-tagsinput.css">
 
 		<!-- Theme CSS -->
 		<link rel="stylesheet" href="/assets/admin/porto/css/theme.css" />
@@ -368,6 +369,11 @@
 				                            <li>
 				                                <a class="nav-link" href="{{ route('admin.articles.categories.index') }}">
 				                                    Управление категориями
+				                                </a>
+				                            </li>
+											<li>
+				                                <a class="nav-link" href="{{ route('admin.articles.tags.index') }}">
+				                                    Управление тегами
 				                                </a>
 				                            </li>
 				    

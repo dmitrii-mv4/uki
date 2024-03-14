@@ -18,9 +18,10 @@ use Illuminate\Support\Facades\Auth;
 //     return view('welcome');
 // });
 
+Route::get('install', 'App\Http\Controllers\HomeController@inslall')->name('home.install');
+
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 
 // Admin
 Route::middleware(['admin'])->prefix('admin')->group(function () 
@@ -56,6 +57,20 @@ Route::middleware(['admin'])->prefix('admin')->group(function ()
             Route::patch('/{category}', 'App\Http\Controllers\Admin\Articles\CategoriesController@update')->name('admin.articles.categories.update');
 
             Route::delete('/{category}/delete', 'App\Http\Controllers\Admin\Articles\CategoriesController@destroy')->name('admin.articles.categories.delete');
+        });
+
+        // Теги
+        Route::prefix('tags')->group(function ()
+        {
+            Route::get('', 'App\Http\Controllers\Admin\Articles\TagsController@index')->name('admin.articles.tags.index');
+
+            Route::get('/create', 'App\Http\Controllers\Admin\Articles\TagsController@create')->name('admin.articles.tags.create');
+            Route::post('', 'App\Http\Controllers\Admin\Articles\TagsController@store')->name('admin.articles.tags.store');
+
+            Route::get('/{tag}/edit', 'App\Http\Controllers\Admin\Articles\TagsController@edit')->name('admin.articles.tags.edit');
+            Route::patch('/{tag}', 'App\Http\Controllers\Admin\Articles\TagsController@update')->name('admin.articles.tags.update');
+
+            Route::delete('/{tag}/delete', 'App\Http\Controllers\Admin\Articles\TagsController@destroy')->name('admin.articles.tag.delete');
         });
     });
 

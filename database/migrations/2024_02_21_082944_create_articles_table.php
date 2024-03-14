@@ -16,13 +16,14 @@ return new class extends Migration
             $table->string('title');
             $table->text('content');
             $table->boolean('is_published')->default(1);
+            $table->text('image');
             $table->timestamps();
 
             $table->softDeletes();
 
-            $table->unsignedBigInteger('category_id')->nullable();
-            $table->index('category_id', 'category_idx');
-            $table->foreign('category_id', 'category_fk')->on('categories')->references('id');
+            $table->unsignedBigInteger('articles_category_id')->nullable();
+            $table->index('articles_category_id', 'articles_category_idx');
+            $table->foreign('articles_category_id', 'articles_category_fk')->on('articles_categories')->references('id');
         });
     }
 

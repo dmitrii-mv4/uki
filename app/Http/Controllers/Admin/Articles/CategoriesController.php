@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin\Articles;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Category;
+use App\Models\ArticlesCategory;
 use Illuminate\Support\Facades\View;
 
 class CategoriesController extends Controller
@@ -19,7 +19,7 @@ class CategoriesController extends Controller
     public function index()
     {
         // Пагинация
-        $categories = Category::paginate('10');
+        $categories = ArticlesCategory::paginate('10');
 
         //$categories = Category::All();
 
@@ -39,16 +39,16 @@ class CategoriesController extends Controller
             'title' => 'string',
         ]);
 
-        Category::create($data);
+        ArticlesCategory::create($data);
         return redirect()->route('admin.articles.categories.index');
     }
 
-    public function edit(Category $category)
+    public function edit(ArticlesCategory $category)
     {
         return view('admin.articles.categories.edit', compact('category'));
     }
 
-    public function update(Category $category)
+    public function update(ArticlesCategory $category)
     {
         $data = request()->validate([
             'title' => 'string',
@@ -60,11 +60,11 @@ class CategoriesController extends Controller
 
     public function delete()
     {
-        $category = Category::withTrashed()->find(2);
+        $category = ArticlesCategory::withTrashed()->find(2);
         $category->restore();        
     }
 
-    public function destroy(Category $category)
+    public function destroy(ArticlesCategory $category)
     {
         $category->delete();
         return redirect()->route('admin.articles.categories.index');

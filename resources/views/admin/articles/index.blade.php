@@ -26,10 +26,6 @@
 
     <section class="card">
         <header class="card-header">
-            <div class="card-actions">
-                <a href="#" class="card-action card-action-toggle" data-card-toggle=""></a>
-            </div>
-
             <h2 class="card-title">Статьи</h2>
         </header>
 
@@ -38,6 +34,7 @@
                 <thead>
                     <tr>
                         <th>ID</th>
+                        <th>Превью</th>
                         <th>Заголовок</th>
                         <th>Категория</th>
                         <th>Статус</th>
@@ -50,6 +47,13 @@
                     @foreach($articles as $article)
                         <tr>
                             <td>{{ $article->id }}</td>
+                            <td>
+                                @if (empty($article->image))
+                                    <img src="/assets/admin/porto/img/no_image.svg" class="img-preview-list"/>
+                                @else
+                                    <img src="{{ asset('content/articles/'.$article->image) }}" class="img-preview-list"/>
+                                @endif
+                            </td>
                             <td><a href="" target="_blank" title="Перейти на статью">{{ $article->title }}</a></td>
                             <td>{{ $article->category->title }}</td>
                             <td>

@@ -26,10 +26,6 @@
 
     <section class="card">
         <header class="card-header">
-            <div class="card-actions">
-                <a href="#" class="card-action card-action-toggle" data-card-toggle=""></a>
-            </div>
-
             <h2 class="card-title">Страницы</h2>
         </header>
 

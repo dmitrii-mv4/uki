@@ -11,17 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('article_tags', function (Blueprint $table) {
+        Schema::create('articles_bind_tags', function (Blueprint $table) {
             $table->id();
 
             $table->unsignedBigInteger('article_id');
             $table->unsignedBigInteger('tag_id');
 
-            $table->index('article_id', 'article_tag_post_idx');
+            $table->index('article_id', 'article_tag_article_idx');
             $table->index('tag_id', 'article_tag_tag_idx');
 
             $table->foreign('article_id', 'article_tag_article_fk')->on('articles')->references('id');
-            $table->foreign('tag_id', 'article_tag_tag_fk')->on('tags')->references('id');
+            $table->foreign('tag_id', 'article_tag_tag_fk')->on('articles_tags')->references('id');
+
+            $table->softDeletes();
 
             $table->timestamps();
         });
@@ -32,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('article_tags');
+        Schema::dropIfExists('articles_bind_tags');
     }
 };

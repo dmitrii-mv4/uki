@@ -39,8 +39,13 @@ class PagesController extends Controller
 
     public function page($page)
     {
-        $page = Page::where('url', $page)->get();
+        $page_db = Page::where('url', $page)->get();
+
+
         $page = $page[0];
+        
+            //abort('404');
+        
 
         //dd($page);
 

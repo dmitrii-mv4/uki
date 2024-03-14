@@ -9,25 +9,25 @@
             <ol class="custom-breadcrumbs breadcrumbs">
                 <li><a href="{{ route('admin.index') }}"><i class="bx bx-home-alt"></i></a></li>
                 <li><a href="{{ route('admin.articles.index') }}">Каталог статей</a></li>
-                <li><span>Управление категориями</span></li>
+                <li><span>Управление тегами</span></li>
             </ol>
         </div>
     </header>
 
     <div class="card-body info-module">
         <div>
-            <strong class="text-color-dark">Всего категорий:</strong>
-            <strong>{{ $categories->count() }}</strong>
+            <strong class="text-color-dark">Всего тегов:</strong>
+            <strong>{{ $tags->count() }}</strong>
         </div>
 
         <div>
-            <a href="{{ route('admin.articles.categories.create') }}" type="button" class="mb-1 mt-1 me-1 btn btn-primary">Добавить категорию</a>
+            <a href="{{ route('admin.articles.tags.create') }}" type="button" class="mb-1 mt-1 me-1 btn btn-primary">Добавить тег</a>
         </div>
     </div>
 
     <section class="card">
         <header class="card-header">
-            <h2 class="card-title">Статьи</h2>
+            <h2 class="card-title">Теги</h2>
         </header>
 
         <div class="card-body">
@@ -35,23 +35,23 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Категория</th>
+                        <th>Тег</th>
                         <th>Дата изменения</th>
                         <th>Дата создания</th>
                         <th>Опции</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($categories as $category)
+                    @foreach($tags as $tag)
                         <tr>
-                            <td>{{ $category->id }}</td>
-                            <td>{{ $category->title }}</td>
-                            <td>{{ $category->updated_at }}</td>
-                            <td>{{ $category->created_at }}</td>
+                            <td>{{ $tag->id }}</td>
+                            <td>{{ $tag->title }}</td>
+                            <td>{{ $tag->updated_at }}</td>
+                            <td>{{ $tag->created_at }}</td>
                             <td class="options">
-                                <a href="{{ route('admin.articles.categories.edit', $category->id) }}" title="Редактировать" class="custom-edit btn btn-primary">Редактировать</a>
+                                <a href="{{ route('admin.articles.tags.edit', $tag->id) }}" title="Редактировать" class="custom-edit btn btn-primary">Редактировать</a>
                                
-                                <form action="{{ route('admin.articles.categories.delete', $category->id) }}" method="post">
+                                <form action="{{ route('admin.articles.tag.delete', $tag->id) }}" method="post">
                                     @csrf
                                     @method('delete')
                                         <input type="submit" id="bDel" class="custom-delete btn btn-danger" value="Удалить" title="Удалить">
@@ -61,7 +61,7 @@
                     @endforeach
                 </tbody>
             </table>
-            {{ $categories->links('pagination::admin-bootstrap-5') }}
+            {{ $tags->links('pagination::admin-bootstrap-5') }}
         </div>
     </section>
   

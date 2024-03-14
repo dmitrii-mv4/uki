@@ -16,14 +16,10 @@
 
     <section class="card">
         <header class="card-header">
-            <div class="card-actions">
-                <a href="#" class="card-action card-action-toggle" data-card-toggle=""></a>
-            </div>
-
             <h2 class="card-title">Создание статьи</h2>
         </header>
         <div class="card-body">
-            <form class="form-horizontal form-bordered" method="POST" action="{{ route('admin.articles.store') }}">
+            <form class="form-horizontal form-bordered" method="POST" action="{{ route('admin.articles.store') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group row pb-4">
                     <label class="col-lg-3 control-label text-lg-end pt-2" for="title">Заголовк:</label>
@@ -55,6 +51,32 @@
                             <option value="0">Не опубликовывать</option>
                             <option value="1">Опубликовать</option>
                         </select>
+                    </div>
+                </div>
+
+                <div class="form-group row pb-4">
+                    <label class="col-lg-3 control-label text-lg-end pt-2" for="image">Превью изображение:</label>
+                    <div class="col-lg-6">
+                        <div class="input-append">
+                            <span class="btn btn-default btn-file">
+                                <input type="file" class="input-img" name="image">
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row pb-4">
+                    <label class="col-lg-3 control-label text-lg-end pt-2" for="tags">Теги:</label>
+                    <div class="col-lg-6">
+                        <span class="multiselect-native-select">
+                            <select class="form-control" multiple="multiple" data-plugin-multiselect="" data-plugin-options="{ &quot;maxHeight&quot;: 200, &quot;enableCaseInsensitiveFiltering&quot;: true }" id="tags" tabindex="-1" name="tags[]">
+                                @foreach ($tags as $tag)
+                                <option 
+                                    {{ old('tag_id') == $tag->id ? 'selected' : '' }} 
+                                    value="{{ $tag->id }}">{{ $tag->title }}</option>
+                                @endforeach
+                            </select>
+                        </span>
                     </div>
                 </div>
 

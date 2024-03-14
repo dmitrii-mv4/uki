@@ -60,4 +60,9 @@ class HomeController extends Controller
         Feedback::create($data);
         return redirect()->route('home');
     }
+
+    public function inslall()
+    {
+        return view('install');
+    }
 }

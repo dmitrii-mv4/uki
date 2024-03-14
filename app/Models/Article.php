@@ -16,11 +16,11 @@ class Article extends Model
 
     public function category()
     {
-        return $this->belongsTo(Category::class, 'category_id', 'id');
+        return $this->belongsTo(ArticlesCategory::class, 'articles_category_id', 'id');
     }
 
     public function tags()
     {
-        return $this->belongsToMany(Tag::class, 'article_tags', 'article_id', 'tag_id');
+        return $this->belongsToMany(ArticlesTag::class, 'articles_bind_tags', 'article_id', 'tag_id');
     }
 }

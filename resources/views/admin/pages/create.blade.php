@@ -16,10 +16,6 @@
 
     <section class="card">
         <header class="card-header">
-            <div class="card-actions">
-                <a href="#" class="card-action card-action-toggle" data-card-toggle=""></a>
-            </div>
-
             <h2 class="card-title">Создание страницы</h2>
         </header>
         <div class="card-body">
@@ -40,7 +36,7 @@
                     <div class="col-lg-6">
                         <div class="input-group">
                             <span class="input-group-text">
-                                https://uki/
+                                @if (isset($_SERVER['HTTPS'])) https://@else http://@endif{{ $_SERVER['HTTP_HOST'] }}/
                             </span>
                             <input type="text" class="form-control" placeholder="contact" name="url" value="{{ old('url') }}">
                             @error('url')

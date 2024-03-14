@@ -26,10 +26,6 @@
 
     <section class="card">
         <header class="card-header">
-            <div class="card-actions">
-                <a href="#" class="card-action card-action-toggle" data-card-toggle=""></a>
-            </div>
-
             <h2 class="card-title">Контактные формы</h2>
         </header>
 
@@ -39,6 +35,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Заголовок</th>
+                        <th>Опции</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -46,6 +43,9 @@
                         <tr>
                             <td>{{ $feedback_form->id }}</td>
                             <td>{{ $feedback_form->title }}</td>
+                            <td class="options">
+                                <a href="{{ route('admin.feedback.forms.edit', $feedback_form->id) }}" title="Редактировать" class="custom-edit btn btn-primary">Редактировать</a>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

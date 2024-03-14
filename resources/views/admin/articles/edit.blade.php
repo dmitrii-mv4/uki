@@ -16,14 +16,10 @@
 
     <section class="card">
         <header class="card-header">
-            <div class="card-actions">
-                <a href="#" class="card-action card-action-toggle" data-card-toggle=""></a>
-            </div>
-
             <h2 class="card-title">Редактирование статьи</h2>
         </header>
         <div class="card-body">
-            <form class="form-horizontal form-bordered" method="POST" action="{{ route('admin.articles.update', $article->id) }}">
+            <form class="form-horizontal form-bordered" method="POST" action="{{ route('admin.articles.update', $article->id) }}" enctype="multipart/form-data">
                 @csrf
                 @method('patch')
                 <div class="form-group row pb-4">
@@ -59,6 +55,38 @@
                                 <option value="1">Опубликовать</option>
                             @endif
                         </select>
+                    </div>
+                </div>
+
+                <div class="form-group row pb-4">
+                    <label class="col-lg-3 control-label text-lg-end pt-2" for="is_published">Превью изображение:</label>
+                    <div class="col-lg-6">
+                        <div class="input-append">
+                            @if (!empty($article->image))
+                                <img src="{{ asset('content/articles/'.$article->image) }}" class="img-preview-edit"/>
+                            @endif
+                            <span class="edit-main-img btn btn-default btn-file">
+                                <input type="file" class="input-img-edit" name="image">
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row pb-4">
+                    <label class="col-lg-3 control-label text-lg-end pt-2" for="tags">Теги:</label>
+                    <div class="col-lg-6">
+                        <span class="multiselect-native-select">
+                            <select class="form-control" multiple="multiple" data-plugin-multiselect="" data-plugin-options="{ &quot;maxHeight&quot;: 200, &quot;enableCaseInsensitiveFiltering&quot;: true }" id="tags" tabindex="-1" name="tags[]">
+                                @foreach ($tags as $tag)
+                                    <option 
+                                        @foreach ($article->tags as $article_tags)
+                                            {{ $tag->id === $article_tags->id ? 'selected' : '' }}
+                                        @endforeach
+                                        value="{{ $tag->id }}">{{ $tag->title }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </span>
                     </div>
                 </div>
 
